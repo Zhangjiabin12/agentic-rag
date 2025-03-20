@@ -1,0 +1,80 @@
+[server]
+host = "0.0.0.0"
+port = "8000"
+timeout_keep_alive = 120
+timeout_graceful_shutdown = 10
+limit_concurrency = 20
+continue_on_disconnect = false
+
+[api_keys]
+admin = "admin-key"
+user = "aaa"
+
+[llm]
+# model = "qwen-plus"
+# api_key = "sk-8ead94e6619145509f448b380444b36f"
+# base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+# model = 'Pro/deepseek-ai/DeepSeek-V3'
+model = 'Qwen/QwQ-32B'
+# model = "Pro/deepseek-ai/DeepSeek-R1"
+api_key = "sk-mdspaqghullufwhcygixhljrcykuhmqbvoxasunnjkvyyhot"
+base_url = "https://api.siliconflow.cn/v1/"
+
+[rag]
+dataset_path = "./data/tmp/dataset"
+split_path = "./data/tmp/split"
+embedding_cache_path = "./data/tmp/embedding_cache"
+vector_db_path = "./data/vector_db"
+collection_name = "default"
+default_embedding_model = "IEITYuan/Yuan-embedding-1.0"
+default_rerank_model = "BAAI/bge-reranker-v2-m3"
+use_reranker = true
+top_k = 5
+chunk_size = 300
+chunk_overlap = 48
+split_method = "separator"
+default_separators = [ "\n\n", "\n", "。", "，", ".", ",", " ",]
+
+[llm_agent]
+thinking_model = 'Qwen/QwQ-32B'
+thinking_api_key = "sk-mdspaqghullufwhcygixhljrcykuhmqbvoxasunnjkvyyhot"
+thinking_base_url = "https://api.siliconflow.cn/v1/"
+
+# thinking_model = "deepseek-r1"
+# thinking_api_key = "sk-8ead94e6619145509f448b380444b36f"
+# thinking_base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+action_model = "qwen-plus"
+action_api_key = "sk-8ead94e6619145509f448b380444b36f"
+action_base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+checker_model = "deepseek-v3"
+checker_api_key = "sk-8ead94e6619145509f448b380444b36f"
+checker_base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+
+[model_list]
+embedding_models = [ "BAAI/bge-m3", "BAAI/bge-large-zh-v1.5", "IEITYuan/Yuan-embedding-1.0",]
+rerank_models = [ "BAAI/bge-reranker-v2-m3",]
+llm_models = [ "qwen-plus", "gpt-3.5-turbo",]
+
+[rag_server]
+host = "127.0.0.1"
+port = 8000
+rag_path = "/rag"
+auto_collection_name = false
+vector_collection_name = "wu_xian_gu_zhang_pai_cha_zhi_nan"
+
+[tracing]
+use_logfire = false
+logfire_project = "maipukefu"
+logfire_api_key = "pylf_v1_us_pRpT8bSjbynNTvx3HxZY0CKTZzTfMKzWzt4b4qBxCTBf"
+
+[logging]
+level = "info"
+format = "%(asctime)s - %(name)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s"
+debug_format = "%(asctime)s - %(name)s - %(levelname)s - [%(filename)s:%(lineno)d:%(funcName)s] - %(message)s"
+log_dir = "./logs"
+max_bytes = 10485760  # 10MB
+backup_count = 5
+encoding = "utf-8"
+console_output = true
+file_output = true
+session_logs = true
